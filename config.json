@@ -1,6 +1,6 @@
 {
-    "problem": "problem17",
-    "max_iterations": 1000,
+    "problem": "problem_datacenter",
+    "max_iterations": 10,
     "pop_factor": 10,
     "elite_factor": 0.05,
     "tolerance": 0.01,

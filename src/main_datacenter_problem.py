@@ -13,8 +13,11 @@ pop_size = p.POP_SIZE if hasattr(p, 'POP_SIZE') else config.pop_factor * \
     len(p.INT_VARS)
 elite_size = int(np.ceil(config.elite_factor * pop_size))
 
+offspring_act = [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 300]
+ti_act = [323] * 10
+
 offspring = utils.generate(pop_size, p.INT_VARS, p.L_BOUND, p.U_BOUND)
-score, feasible = utils.evaluate(offspring, p.evaluate, p.MAX)
+score, feasible = utils.evaluate(offspring, p.evaluate, offspring_act, ti_act, p.MAX)
 
 fittest = None
 s_fittest = None
@@ -39,9 +42,9 @@ for i in range(0, config.max_iterations):
     off = pm.mutate(off, p.INT_VARS, p.L_BOUND, p.U_BOUND)
 
     offspring = tr.truncate(np.vstack((elite, off)), p.INT_VARS)
-    score, feasible = utils.evaluate(offspring, p.evaluate, p.MAX)
+    score, feasible = utils.evaluate(offspring, p.evaluate, offspring_act, ti_act, p.MAX)
     qt_evals = qt_evals + pop_size
 
 print(fittest)
 print(s_fittest)
-print(qt_evals)
+# print(qt_evals)
