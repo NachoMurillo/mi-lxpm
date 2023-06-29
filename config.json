@@ -1,8 +1,8 @@
 {
     "problem": "problem_datacenter",
-    "max_iterations": 10,
+    "max_iterations": 1000,
     "pop_factor": 10,
-    "elite_factor": 0.05,
+    "elite_factor": 0.01,
     "tolerance": 0.01,
     "lx": {
         "a": 0,

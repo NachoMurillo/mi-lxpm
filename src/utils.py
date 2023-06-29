@@ -20,11 +20,11 @@ def generate(n, int_vars, l_bound, u_bound):
     return np.array(gen)
 
 
-def evaluate(population, f_eval, population_act, ti_act, max=False):
+def evaluate(population, f_eval, population_act, ti_act, tc_act, max=False):
     fitness = np.zeros(population.shape[0])
     f_fworst = np.min if max else np.max
 
-    score, constraint = f_eval(population, population_act, ti_act)
+    score, constraint = f_eval(population, population_act, ti_act, tc_act)
 
     feasible_idx = np.where(constraint == 0)
     feasible = score[feasible_idx]
